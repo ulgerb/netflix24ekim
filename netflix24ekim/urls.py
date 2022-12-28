@@ -18,10 +18,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
 from appMy.views import *
+from appUser.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index, name='index'),
     path('profil/', Browse, name='Browse'),
     path('netflix/', browseIndex, name='browseIndex'),
+    # User
+    path('login/', loginUser, name='loginUser'),
+    path('register/', registerUser, name='registerUser'),
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

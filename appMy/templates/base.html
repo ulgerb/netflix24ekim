@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,12 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- My CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block css %}
+        
+    {% endblock css %}
+        
+    
 </head>
 
 <body>

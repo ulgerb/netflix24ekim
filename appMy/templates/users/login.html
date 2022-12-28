@@ -63,15 +63,24 @@
 
         <div class="hero-text">
             <!-- form -->
-            <form action="" class="hero-text2 mt-5 mb-5">
+            
+            {% if hata %}
+            <div style="position: absolute; top: -100px;" class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ hata }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+                
+            <form method="POST" action="" class="hero-text2 mt-5 mb-5">
+                {% csrf_token %}
                 <h2>Oturum Aç</h2>
 
                 <div class="mb-3">
-                    <input type="text" class="form-control form-control-lg" placeholder="E-posta veya telefon numarası">
-                    <input type="password" name="" id="" class="form-control form-control-lg mt-5">
+                    <input type="text" name="username" class="form-control form-control-lg" placeholder="E-posta veya telefon numarası">
+                    <input type="password" name="password" id="" class="form-control form-control-lg mt-5">
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-danger btn-lg" type="button">Oturum Aç</button>
+                    <button class="btn btn-danger btn-lg" type="submit">Oturum Aç</button>
                 </div>
 
                 <div class="form-check text-start">
