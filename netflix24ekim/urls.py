@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index, name='index'),
     path('profil/', Browse, name='Browse'),
-    path('netflix/', browseIndex, name='browseIndex'),
+    path('netflix/<id>/', BrowseIndex, name='netflix'),
     # User
     path('login/', loginUser, name='loginUser'),
     path('register/', registerUser, name='registerUser'),

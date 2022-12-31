@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     {% block css %}
-        
+        <div class="rounded-circle"></div>
     {% endblock css %}
         
     
@@ -23,10 +23,16 @@
 <body>
 
 
+{% block nonheader %}
+
+{% include 'part/_header.html' %}
+{% endblock nonheader %}
+
 {% block body %}
     
 {% endblock body %}
         
+{% include 'part/_footer.html' %}
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

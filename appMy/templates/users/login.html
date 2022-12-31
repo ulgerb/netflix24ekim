@@ -3,7 +3,6 @@
 {% load static %}
 
 
-
 {% block css %}
     <style>
         h2 {
@@ -12,13 +11,13 @@
         }
     
         .hero-image {
-            height: 180%;
+            height: 100%;
         }
     
         .hero-text {
             background-color: rgba(0, 0, 0, 0.700);
             width: 500px;
-            top: 30%;
+            top: 50%;
         }
     
         .hero-text2 {
@@ -43,7 +42,7 @@
     
         @media screen and (max-width: 700px) {
             .hero-image {
-                background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url(arkaplan.jpg);
+                background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
             }
         }
     </style>
@@ -51,13 +50,14 @@
     
 
 
-{% block body %}
+{% block nonheader %}
 
-    <div class="hero-image">
+    <div class="hero-image" style="">
+        <img src="{% static 'img/arkaplan.jpg' %}" alt="">
         <!-- navbar -->
         <nav class="navbar">
             <div class="container">
-                <a href="" class="navbar-brand"><img src="{% static 'netflix_logo.png" alt=""></a>
+                <a href="" class="navbar-brand"><img src="{% static 'img/netflix_logo.png' %}" alt=""></a>
             </div>
         </nav>
 
@@ -99,4 +99,4 @@
 
     </div>
 
-{% endblock body %}
+{% endblock nonheader %}

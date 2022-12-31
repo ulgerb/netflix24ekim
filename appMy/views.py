@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from appUser.models import Profil
 # Create your views here.
 
 
@@ -10,5 +10,18 @@ def browseIndex(request):
     return render(request,'browse-index.html')
 
 def Browse(request):
-    return render(request,'browse.html')
+    profils = Profil.objects.filter(user=request.user.id)
+    
+    context = {
+        "profils":profils,
+    }
+    return render(request,'browse.html',context)
 
+def BrowseIndex(request, id):
+    profil = Profil.objects.get(id=id)
+    
+    context = {
+        "profil":profil,
+    }
+    
+    return render(request,'browse-index.html',context)

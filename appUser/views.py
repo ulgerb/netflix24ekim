@@ -33,8 +33,17 @@ def registerUser(request):
         password2 = request.POST["password2"]
         
         if password1 == password2:
-            user = User.objects.create_user(first_name=name, last_name=surname, email=email, username=username, password=password1)
-            user.save()
+            if not User.objects.filter(username = username).exists():
+                if not User.objects.filter(email=email).exists():
+                    user = User.objects.create_user(first_name=name, last_name=surname, email=email, username=username, password=password1)
+                    user.save()
+                    return redirect("loginUser")
+                else:
+                    return render(request, 'users/register.html', {"hata": "Bu mail üzerine daha önceden hesap oluşturulmuş!"})
+            else:
+                return render(request, 'users/register.html', {"hata": "Bu kulanıcı adı daha önceden alınmış!"})
+        else:
+            return render(request, 'users/register.html', {"hata": "şifreler aynı değil!"})
             
             
     return render(request,'users/register.html')

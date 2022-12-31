@@ -7,11 +7,17 @@ body, html {
 /* Hero image */
 .hero-image {
     background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(img/arkaplan.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 800px;
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
     background-size: cover;
     position: relative;
+}
+.hero-image>img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
 }
 .hero-text {
     text-align: center;
