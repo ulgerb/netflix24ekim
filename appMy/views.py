@@ -1,13 +1,11 @@
 from django.shortcuts import render
-from appUser.models import Profil
+from appUser.models import *
+from .models import *
 # Create your views here.
 
 
 def index(request):
     return render(request,'index.html')
-
-def browseIndex(request):
-    return render(request,'browse-index.html')
 
 def Browse(request):
     profils = Profil.objects.filter(user=request.user.id)
@@ -19,9 +17,11 @@ def Browse(request):
 
 def BrowseIndex(request, id):
     profil = Profil.objects.get(id=id)
+    videos = Video.objects.all()
     
     context = {
         "profil":profil,
+        "videos":videos,
     }
     
     return render(request,'browse-index.html',context)

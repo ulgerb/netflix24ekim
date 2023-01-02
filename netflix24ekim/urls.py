@@ -26,6 +26,7 @@ urlpatterns = [
     path('profil/', Browse, name='Browse'),
     path('netflix/<id>/', BrowseIndex, name='netflix'),
     # User
+    path('account/<id>/', Account, name='Account'),
     path('login/', loginUser, name='loginUser'),
     path('register/', registerUser, name='registerUser'),
     

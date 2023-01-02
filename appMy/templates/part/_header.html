@@ -1,11 +1,14 @@
+{% load static %}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-black fixed-top navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/netflix_logo.png" width="40" alt=""></a>
+        <a class="navbar-brand" href="#"><img src="{% static 'img/netflix_logo.png' %}" width="100" height="50px" style="object-fit: cover;" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
+        {% if request.path != account %}
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -24,7 +27,9 @@
                     <a class="nav-link" href="#">Listem</a>
                 </li>
             </ul>
-        </div>
+        </div> 
+        {% endif %}
+            
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
@@ -35,11 +40,11 @@
                         {{ profil.name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Profil Yönetimi</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Browse' %}">Profil Yönetimi</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Hesap</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Account' profil.id %}">Hesap</a></li>
                         <li><a class="dropdown-item" href="#">Yardım Merkezi</a></li>
                         <li><a class="dropdown-item" href="#">Netflix oturumunu kapat</a></li>
                     </ul>

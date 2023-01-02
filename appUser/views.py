@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout # kullanıcı fonksiyonları
 from django.contrib.auth.models import User
+from appUser.models import *
 
 # Create your views here.
 
@@ -48,6 +49,15 @@ def registerUser(request):
             
     return render(request,'users/register.html')
 
+
+def Account(request, id):
+    profil = Profil.objects.get(id=id)
+    account = '/account/'+ id + '/'
+    context = {
+        'profil': profil,
+        'account': account,
+    }
+    return render(request,'users/hesap.html', context)
 # Şifre değiştir
 
 

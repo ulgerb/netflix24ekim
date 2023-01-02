@@ -11,13 +11,13 @@
     }
 
     .hero-image {
-        height: 180%;
+        height: 100vh;
     }
 
     .hero-text {
         background-color: rgba(0, 0, 0, 0.700);
         width: 500px;
-        top: 30%;
+        top: 50%;
     }
 
     .hero-text2 {
@@ -50,13 +50,14 @@
 
 
 
-{% block body %}
+{% block nonheader %}
 
 <div class="hero-image">
+    <img src="{% static 'img/arkaplan.jpg' %}" alt="">
     <!-- navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="" class="navbar-brand"><img src="{% static 'netflix_logo.png" alt=""></a>
+            <a href="" class="navbar-brand"><img src="{% static 'img/netflix_logo.png' %}" alt=""></a>
         </div>
     </nav>
 
@@ -95,4 +96,4 @@
 
 </div>
 
-{% endblock body %}
+{% endblock nonheader %}
