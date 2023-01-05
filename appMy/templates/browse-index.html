@@ -25,10 +25,43 @@
             
             {% for video in videos %}
             <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
+                <a href="video.html" data-bs-toggle="modal" data-bs-target="#video{{ video.id }}">
                     <img src="{{ video.image.url }}" class="w-100 h-100" alt="" style="object-fit: cover;">
                 </a>
                 <div class="text-white">{{ video.title }}</div>
+
+                
+                <!-- Modal -->
+                <div class="modal fade" id="video{{ video.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ video.title }}</h1>
+                                <div class="dropdown ms-4">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Seçenekler
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Listeme Ekle</a></li>
+                                        <li><a class="dropdown-item" href="#">Beğen</a></li>
+                                        <li><a class="dropdown-item" href="#">Beğenmedim</a></li>
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="w-100">
+                                    <img class="w-100" src="{{ video.image.url }}" alt="">
+                                </div>
+                                {{ video.text }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
                 

@@ -49,6 +49,10 @@ def registerUser(request):
             
     return render(request,'users/register.html')
 
+# Çıkış yap
+def logoutUser(request):
+    logout(request)
+    return redirect('index')
 
 def Account(request, id):
     profil = Profil.objects.get(id=id)
@@ -58,7 +62,20 @@ def Account(request, id):
         'account': account,
     }
     return render(request,'users/hesap.html', context)
-# Şifre değiştir
 
+# Şifre değiştir
+def changePassword(request):
+    
+    if request.method == "POST":
+        password1 = request.POST["password1"]
+        password2 = request.POST["password2"]
+
+        if password1==password2:
+            user = User.objects.get(username = request.user)
+            user.set_password(password1)
+            user.save()
+            return redirect('loginUser')
+    
+    return render(request,'users/changepassword.html')
 
 

@@ -48,11 +48,40 @@
                 </a>
             </div>
             {% endfor %}
-                
-
+            
+            
+            {% if hata %}
+                <div class="alert alert-secondary" role="alert">
+                    {{ hata }}
+                </div>
+            {% else %}
+            <!-- Profil Ekle -->
             <div class="buton mb-5 text-center">
-                <button class="bg-dark text-secondary w-50 p-2 ">Profil Yönetimi</button>
+                <button class="bg-dark text-secondary w-50 p-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">Profil Yönetimi</button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Profil Oluştur</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <input type="text" name="name" class="form-control mt-2" placeholder="Profil Adı" aria-label="Profil Adı" aria-describedby="basic-addon1">
+                                    <input type="file" name="image" class="form-control mt-2" id="inputGroupFile02">
+                                    <button type="submit" class="btn btn-primary mt-2">Profil Oluştur</button>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
+            {% endif %}
+                
+            
         </div>
     </div>
 

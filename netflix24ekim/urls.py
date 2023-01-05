@@ -24,10 +24,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index, name='index'),
     path('profil/', Browse, name='Browse'),
+    path('profil/delete/<id>/', profilDel, name='profilDel'),
     path('netflix/<id>/', BrowseIndex, name='netflix'),
     # User
     path('account/<id>/', Account, name='Account'),
-    path('login/', loginUser, name='loginUser'),
-    path('register/', registerUser, name='registerUser'),
+    path('login/', loginUser, name='loginUser'), # GİRİŞ YAP
+    path('register/', registerUser, name='registerUser'), # KAYDOL
+    path('logout/', logoutUser, name='logoutUser'), # çıkış yap
+    path('changepassword/', changePassword,name='changePassword'),
     
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

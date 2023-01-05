@@ -41,15 +41,34 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{% url 'Browse' %}">Profil Yönetimi</a></li>
+                        <li><a class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Profil Sil</a></li>
+                        
+                        
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="{% url 'Account' profil.id %}">Hesap</a></li>
                         <li><a class="dropdown-item" href="#">Yardım Merkezi</a></li>
-                        <li><a class="dropdown-item" href="#">Netflix oturumunu kapat</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Oturumunu kapat</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Profili silmek istediğine emin misin?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'profilDel' profil.id %}" type="button" class="btn btn-primary">Evet</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+            </div>
+        </div>
+    </div>
+</div>
