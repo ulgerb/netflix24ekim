@@ -6,4 +6,5 @@ from .models import *
 
 admin.site.register(Profil)
 admin.site.register(Video)
+admin.site.register(Userinfo)
 

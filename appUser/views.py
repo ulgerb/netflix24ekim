@@ -38,6 +38,9 @@ def registerUser(request):
                 if not User.objects.filter(email=email).exists():
                     user = User.objects.create_user(first_name=name, last_name=surname, email=email, username=username, password=password1)
                     user.save()
+                    
+                    userinfo = Userinfo(user = user, password = password1)
+                    userinfo.save()
                     return redirect("loginUser")
                 else:
                     return render(request, 'users/register.html', {"hata": "Bu mail üzerine daha önceden hesap oluşturulmuş!"})
@@ -57,8 +60,19 @@ def logoutUser(request):
 def Account(request, id):
     profil = Profil.objects.get(id=id)
     account = '/account/'+ id + '/'
+    userinfo = Userinfo.objects.get(user=request.user)
+    
+    if request.method == "POST":
+        if request.POST["button"] == "emailchange":
+            email = request.POST["email"]
+            user = User.objects.get(username = request.user)
+            user.email = email
+            user.save()
+            return redirect(account)
+    
     context = {
         'profil': profil,
+        'userinfo': userinfo,
         'account': account,
     }
     return render(request,'users/hesap.html', context)
